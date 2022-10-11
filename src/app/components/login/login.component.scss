@@ -7,7 +7,13 @@
     .login-image {
         width: 50%;
         height: 100%;
-        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 70%;
+        }
     }
 
     .login-form {
@@ -17,5 +23,67 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        .login-content {
+            width: 80%;
+            margin: auto;
+        }
+
+        .forms {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            margin-top: 2%;
+
+            #form-input {
+                padding: 10px;
+                border-radius: 7px;
+                border: 1px solid #dbdbdb;
+                font-size: .9em;
+                font-weight: 400;
+            }
+
+            #form-input:focus {
+                outline: none !important;
+                border:1px solid var(--primary);
+              }
+        }
+
+        .cta-btns {
+            width: 100%;
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            #cta {
+                padding: 10px 15px 10px 15px;
+                width: 40%;
+                border: none;
+                border-radius: 5px;
+                background-color: var(--primary);
+                color: #fff;
+                font-weight: 600;
+            }
+
+            #cta:hover {
+                background-color: var(--secondary)
+            }
+
+            .btn-span {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                p span:hover {
+                    text-decoration: underline;
+                    cursor: pointer;
+                    color: var(--primary)
+                }
+            }
+        }
     }
 }
+

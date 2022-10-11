@@ -1,9 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+:root {
+    --primary: #035B96;
+    --secondary: #04396C;
+    --tertiary: #031F4B;
+    --font: #404040;
+    --second-font: #666666;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 
 * {
     font-family: 'Poppins',sans-serif;
     margin: 0;
     padding: 0;
+}
+
+html {
+    h3 {
+        font-size: 1.5em;
+        font-weight: 500;
+    }
+
+
+    p{
+        font-size: .8em;
+        line-height: 1.5;
+        font-weight: 500;
+        color: var(--second-font);
+        margin-block-end: 0em;
+    }
+
+    span{
+        font-size: 1em;
+        line-height: 1.5;
+        font-weight: 500;
+        color: var(--second-font)
+    }
 }
