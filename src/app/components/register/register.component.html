@@ -1,1 +1,114 @@
-<p>register works!</p>
+<div class="container-fluid p-3 m-auto" >
+
+    <div class="d-flex">
+        
+        <button class="btn btn-primary _backButton" (click) ="back_to_login()">Back</button>
+        <h1 class="_title">{{_userRole}} registration</h1>
+
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit) = "register_user()">
+
+
+    <div class="row">
+
+
+        <div class="col-6">
+            <label for="_email">Email</label>
+            <input type="email" autocomplete="off" name="_email" id="_email" class="form-control _email" formControlName="_email">
+            <label *ngIf="register_form_submitted && errorControl._email.errors?.required"> Email is Required </label>
+            <label *ngIf="register_form_submitted && errorControl._email.errors?.email"> Enter Valid Email</label>
+        </div>
+
+        <div class="col-6">
+            <label for="_password">Password</label>
+            <input minlength="8" type="password" autocomplete="off" name="_password" id="_password" class="form-control _password" formControlName="_password" >
+            <label *ngIf="register_form_submitted && errorControl._password.errors?.required"> Password is Required </label>
+            <label *ngIf="register_form_submitted && errorControl._password.errors?.minlength"> Password Must 8 characters long </label>
+        </div>
+
+        <div class="col-6">
+            <label for="_firstname">Firstname:</label>
+            <input type="text" autocomplete="off" name="_firstname" id="_firstname" class="form-control _firstname" formControlName="_firstname">
+            <label *ngIf="register_form_submitted && errorControl._firstname.errors?.required"> Firstname is Required </label>
+
+        </div>
+
+        <div class="col-6">
+            <label for="_middlename">Middlename:</label>
+            <input type="text" autocomplete="off" name="_middlename" id="_middlename" class="form-control _middlename" formControlName="_middlename">
+        </div>
+
+        <div class="col-12">
+            <label for="_lastname">Lastname:</label>
+            <input type="text" autocomplete="off" name="_lastname" id="_lastname" class="form-control _lastname" formControlName="_lastname">
+            <label *ngIf="register_form_submitted && errorControl._lastname.errors?.required"> Lastname is Required </label>
+        </div>
+
+        <div class="col-12">
+            <label for="_contact">Contact:</label>
+            <div class="input-group mb-3">
+                
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="_contact">+639</label>
+                </div>
+              
+                <input minlength="9" min="0" type="text" autocomplete="off" name="_contact" id="_contact" class="form-control _contact" formControlName="_contact">
+             <!-- <input type="text" name=""  id="_contact" class="form-control"> -->
+
+            </div>
+            <label *ngIf="register_form_submitted && errorControl._contact.errors?.required"> Contact is Required </label>
+            <label *ngIf="register_form_submitted && errorControl._contact.errors?.minlength"> Enter 9 Digit number </label>
+        </div>
+
+        <div class="col-12">
+            <label for="_address">Address:</label>
+            <input type="text" autocomplete="off" name="_address" id="_address" class="form-control _address" formControlName="_address">
+            <label *ngIf="register_form_submitted && errorControl._address.errors?.required"> Address is Required </label>
+        </div>
+
+
+        <div class="_riderValidations mt-5" *ngIf="_userRole == 'rider'">
+            <div class="row">
+                <div class="col-6">
+                    <h4>License</h4>
+                    <img class="_imageHolder" [src]="_imageLicenseSource" alt="" >
+                    <input type="file" name="" (change)="onUploadHandler($event, 'license')" id="_imageSelector" formControlName="_license" accept="image/x-png,image/jpeg">
+                    <label *ngIf="register_form_submitted && errorControl._license.errors?.required"> License is Required </label>
+                </div>
+                <div class="col-6">
+                    <h4>Car Registration</h4>
+                    <img class="_imageHolder" [src]="_imageRegistrationSource" alt="" >
+                    <input type="file" name="" (change)="onUploadHandler($event, 'registration')" id="_imageSelector" formControlName="_registration" accept="image/x-png,image/jpeg">
+                    <label *ngIf="register_form_submitted && errorControl._registration.errors?.required"> Car Registration is Required </label>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-12 pt-3">
+            <button type="submit" class="btn btn-primary btn-sm">Register!</button>
+        </div>
+
+
+    </div>
+
+    </form>
+
+    <!-- SPINNER -->
+    <div class="modal" id="spinnerModal">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border: none; background-color: transparent;">
+    
+              <div class="text-center">
+                <div class="spinner-border text-info"  style="width: 3rem; height: 3rem;"  role="status">
+                </div>
+              </div>
+        
+    
+        </div>
+        </div>
+    </div>
+
+</div>
