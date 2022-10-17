@@ -16,14 +16,14 @@
         <div class="cta-btns">
             <div class="btn-span">
                 <p>
-                    <span>Already have an account? </span>
+                    <span data-bs-toggle="modal" data-bs-target="#registerModal">No account yet? </span>
                     <br>
-                    <span>Forgot Password</span>
+                    <span data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Forgot Password</span>
                 </p>
                 <button id="cta" class="_loginButton" (click)="login_user()">Login</button>
-                <button type="button" id="cta"  class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#registerModal">
+                <!-- <button type="button" id="cta"  class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#registerModal">
                   Register
-                </button>
+                </button> -->
             </div>
         </div>
     </div>
@@ -34,21 +34,29 @@
 
 <!-- USER TYPE SELECTION MODAL -->
 <div class="modal bounceIn" id="registerModal">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
+  <div class="modal-dialog modal-md modal-dialog-centered">
     <div class="modal-content p-5">
 
-      <div class="row">
+      <div class="row modal-page">
 
         <div class="col-12">
-          <h2 class="text-center">Register As</h2>
+          <h3 class="text-center">Register as</h3>
         </div>
         
         <div class="col-6 p-3 text-center">
-          <button class="btn btn-primary w-100 _register" (click) = "register('rider')" data-bs-dismiss="modal">RIDER</button>
+          <!-- <button class="btn btn-primary w-100 _register" (click) = "register('rider')" data-bs-dismiss="modal">RIDER</button> -->
+
+          <img src="./assets/rider.png" alt="" style="width: 50%;"  (click) = "register('rider')" data-bs-dismiss="modal">
+          <p style="margin-top: 5px">Rider</p>
         </div>
+
+      
     
         <div class="col-6 p-3 text-center">
-          <button class="btn btn-primary w-100 _register" (click) = "register('user')" data-bs-dismiss="modal">USER</button>
+          <!-- <button class="btn btn-primary w-100 _register" (click) = "register('user')" data-bs-dismiss="modal">USER</button> -->
+          
+          <img src="./assets/passenger.png" alt="" style="width: 50%;"  (click) = "register('user')" data-bs-dismiss="modal">
+          <p style="margin-top: 5px">Passenger</p>
         </div>
     
       </div>
@@ -83,4 +91,15 @@
 </div>
  
 
+</div>
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h3>Forgot Password</h3>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+  </div>
 </div>
