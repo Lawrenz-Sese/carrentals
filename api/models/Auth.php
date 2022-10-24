@@ -251,10 +251,10 @@ require '../api/vendor/autoload.php';
 			$payload = $d;
 			$user_email = $d->user_email;
 			$user_password = $d->user_password;
-			$payload = "";
-			$remarks = "";
-			$message = "";
-			$code = 0;
+			$code = 404;
+			$icon = 'error';
+			$text = "Wrong Password or Email";
+			$title = 'Wrong Credentials';
 
 			$sql = "SELECT * FROM tbl_user WHERE user_email='$user_email' LIMIT 1";
 			$res = $this->gm->generalQuery($sql, "Incorrect username or password");
@@ -270,53 +270,69 @@ require '../api/vendor/autoload.php';
 		
 
 					$code = 200;
-					$remarks = "success";
-					$message = "Logged in successfully";
+					$icon = "success";
+					$text = "Logged in successfully";
 					$payload = array("user_id"=>$user_id, "user_fname"=>$user_fname, "user_lname"=>$user_lname, "user_type"=>$user_type,"isAllowedToBook" => $isAllowedToBook);
-				
+					$title = "Successfully Logged In";
 						
 					if($res['data'][0]['isVerified'] == 0)
 					{
-						$message = "not verified";
+						$text = "not verified";
 
 					}
 
 				
 				} else {
 					$payload = null; 
-					$remarks = "error"; 
-					$message = "Incorrect username or password";
+					$icon = "error"; 
+					$text = "Incorrect username or password";
 				}
 			}	else {
 				$payload = null; 
-				$remarks = "error"; 
-				$message = $res['errmsg'];
+				$icon = "error"; 
+				$text = $res['errmsg'];
 			}
-			return $this->gm->sendPayload($payload, $remarks, $message, $code);
+
+			return array('code' => $code, 'icon' => $icon, 'text' => $text, 'title' => $title, 'payload' => $payload);
+
 
 			
 		}
 
 		public function verify_user($d)
 		{
-			print_r($d->user_otp);
+			
 			$sql = "SELECT * FROM tbl_userverification WHERE user_email = '$d->user_email' AND user_otp = '$d->user_otp'";
 			$result = $this->gm->generalQuery($sql, "Incorrect username or password");
-			
-			if($res["code"] != 404)
+			$code = 404;
+			$icon = 'error';
+			$text = "You've entered the wrong OTP";
+			$title = 'Wrong OTP';
+
+			if($result["code"] == 200)
 			{
 				
-				$verify_sql = "UPDATE tbl_user SET 'isVerified' = 1 WHERE user_email = '$d->user_email'";
+				$verify_sql = "UPDATE `tbl_user` SET `isVerified` = 1 WHERE user_email = '$d->user_email'";
 				$response = $this->gm->generalQuery($sql, "Incorrect username or password");
 
+				$isVerified = $this->pdo->query($verify_sql);
+
+				if(!$isVerified)
+				{
+					$title = 'Something went wrong!';
+					$text = 'Please contact the administrator';
+				}
+				else
+				{
+					$code = 200;
+					$icon = 'success';
+					$title = 'User Verified';
+					$text = 'Welcome to Car Rentals!';
+				}
 
 			}
-
-			print_r("wrong otp");
-
-
-
-
+	
+			return array('code' => $code, 'icon' => $icon, 'text' => $text, 'title' => $title);
 
 		}
 

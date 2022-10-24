@@ -75,14 +75,26 @@ export class LoginComponent implements OnInit {
     {
       console.log(response);
 
-      if(response.status.message != "not verified")
+      if(response.text != "not verified")
       {
-        this.dynamic_alert(response.status.remarks, `Welcome ${response.payload.user_fname} ${response.payload.user_lname}`, response.status.message )
+        this.dynamic_alert(response.icon, `Welcome ${response.payload.user_fname} ${response.payload.user_lname}`, response.text );
         // INSERT ROUTE HERE (ADMIN PAGE || RIDER/USER PAGE)
         return;
       }
 
-      $('#otpModal').modal('show');
+      else if(response.text == "not verified")
+      {
+        $('#otpModal').modal('show');
+        return;
+      }
+
+      else
+      {
+        this.dynamic_alert(response.icon, response.title, response.text);
+       
+      }
+
+   
    
     });
 
@@ -97,12 +109,10 @@ export class LoginComponent implements OnInit {
     this.dataService.sendRequest('verify_user', this._userInfo)
     .subscribe(async (response) =>
     {
-        if(response.code == 200)
-        {
+    
           await $("#otpModal").modal('hide');
           this.dynamic_alert(response.icon, response.title, response.text);
-        }
-
+     
     });
 
 
