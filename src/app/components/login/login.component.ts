@@ -77,9 +77,13 @@ export class LoginComponent implements OnInit {
 
       if(response.text != "not verified")
       {
+        
         this.dynamic_alert(response.icon, `Welcome ${response.payload.user_fname} ${response.payload.user_lname}`, response.text );
+        localStorage.setItem('sessionUser', JSON.stringify(response.payload));
+
         // INSERT ROUTE HERE (ADMIN PAGE || RIDER/USER PAGE)
         return;
+
       }
 
       else if(response.text == "not verified")

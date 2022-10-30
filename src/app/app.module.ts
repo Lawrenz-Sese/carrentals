@@ -8,13 +8,15 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { AuthguardServiceService } from './services/authguard-service.service';
+import { ProfileComponent } from './components/profile/profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent
 
   ],
   imports: [
@@ -24,7 +26,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+                AuthguardServiceService
+             ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
