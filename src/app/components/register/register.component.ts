@@ -193,9 +193,6 @@ $(document).on('change', '#_imageSelector', function(e)
     $('._imageHolder').attr("src" , event.target.result);
   }
 
-  
-  
-
 });
 
 

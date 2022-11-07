@@ -260,19 +260,32 @@ require '../api/vendor/autoload.php';
 			$res = $this->gm->generalQuery($sql, "Incorrect username or password");
 			if($res['code'] == 200) {
 				if($this->pword_check($user_password, $res['data'][0]['user_password'])) {
+					$user_payload = new StdClass;
+					$user_payload->user_email = $res['data'][0]['user_email'];
+					$user_payload->user_fname = $res['data'][0]['user_fname'];
+					$user_payload->user_mname = $res['data'][0]['user_mname'];
+					$user_payload->user_lname = $res['data'][0]['user_lname'];
+					$user_payload->user_address = $res['data'][0]['user_address'];
+					$user_payload->user_id = $res['data'][0]['user_id'];
+					$user_payload->user_type = $res['data'][0]['user_type'];
+					$user_payload->isVerified = $res['data'][0]['isVerified'];
+					$user_payload->userAddedDate = $res['data'][0]['userAddedDate'];
+					$user_payload->user_contact = $res['data'][0]['user_contact'];
+					
 				
-					$user_fname = $res['data'][0]['user_fname'];
-					$user_lname = $res['data'][0]['user_lname'];
-					$user_id = $res['data'][0]['user_id'];
-					$user_type = $res['data'][0]['user_type'];
-					$isVerified = $res['data'][0]['isVerified'];
-					$isAllowedToBook = $res['data'][0]['isAllowedToBook'];
+					if($res['data'][0]['user_type'] == "rider")
+					{
+						$user_payload->riderLicense = $res['data'][0]['rider_license'];
+						$user_payload->riderRegistration = $res['data'][0]['rider_registration'];
+						$user_payload->isAllowedToBook = $res['data'][0]['isAllowedToBook'];
+					}
+
 		
 
 					$code = 200;
 					$icon = "success";
 					$text = "Logged in successfully";
-					$payload = array("user_id"=>$user_id, "user_fname"=>$user_fname, "user_lname"=>$user_lname, "user_type"=>$user_type,"isAllowedToBook" => $isAllowedToBook);
+					
 					$title = "Successfully Logged In";
 						
 					if($res['data'][0]['isVerified'] == 0)
@@ -293,7 +306,7 @@ require '../api/vendor/autoload.php';
 				$text = $res['errmsg'];
 			}
 
-			return array('code' => $code, 'icon' => $icon, 'text' => $text, 'title' => $title, 'payload' => $payload);
+			return array('code' => $code, 'icon' => $icon, 'text' => $text, 'title' => $title, 'payload' => $user_payload);
 
 
 			
