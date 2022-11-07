@@ -1,0 +1,115 @@
+h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.page-container {
+  background-color: #f8f5f2;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.side-nav {
+  width: 5%;
+  height: 100vh;
+  background-color: #078080;
+  border-radius: 0px 9px 9px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
+  .profile-img {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+
+    img {
+      width: 60%;
+      margin-top: 20px
+    }
+  }
+
+  .nav-links {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+
+    .nav-icons {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      color: #f8f5f2;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .active{
+        background-color: #f8f5f2;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        color: #078080;
+    }
+
+    .divisor {
+        width: 60%;
+        height: 2px;
+        background-color: #f8f5f2;
+        margin-top: -5px;
+    }
+  }
+
+}
+
+
+// Content Codes place here
+
+.body-container {
+  width: 95%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+
+  .body-main {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    .body-banner {
+      width: 95%;
+      height: 250px;
+      background-color: #f45d48;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
+    .body-dash {
+      width: 95%;
+      margin-top: 15px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .body-sub {
+    width: 30%;
+    height: 100%;
+    background-color: #f9f9f9;
+  }
+}
