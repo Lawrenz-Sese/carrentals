@@ -51,7 +51,49 @@
           </div>
         </div>
 
-        <div class="booking-cards">
+        <div *ngIf="drivers.length == 0">
+          NO DATA
+        </div>
+
+
+          <div class="booking-cards">
+            <div class="card-booking" *ngFor = "let drivers of drivers">
+                <div class="colored-line"></div>
+                <div class="driver-info">
+                    <div class="dr-image">
+                        <div class="img-holder">
+                            <img src="./assets/blank.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="dr-text">
+                        <p style="font-weight: 700">{{drivers.user_fname}} {{drivers.user_mname}} {{drivers.user_lname}}</p>
+                        <p>{{drivers.user_contact}}</p>
+                        <p>{{drivers.user_address}}</p>
+                        <p>Rating: {{drivers.rating_num}}</p>
+                    </div>
+                </div>
+                <div class="ride-info">
+                    <p style="font-weight: 700; margin-left: 10px;">Car Details</p>
+                    <div class="car-details">
+                        <p>{{drivers.car_gas}}</p>
+                        <p>|</p>
+                        <p>{{drivers.car_type}}</p>
+                        <p>|</p>
+                        <p>{{drivers.car_seater}} Seater</p>
+                    </div>
+                    <div class="cta-btn">
+                        <button>
+                            <p>{{drivers.rate | currency: 'P'}}/Day</p>
+                        </button>
+                        <button type="button" (click)="open_car_detail(drivers)" >
+                            <p>Detail</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="booking-cards">
             <div class="card-booking" *ngFor = "let driver of driver">
                 <div class="colored-line"></div>
                 <div class="driver-info">
@@ -86,7 +128,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
       </div>
       <div class="sub">
@@ -117,6 +159,48 @@
             <div class="colored-line"></div>
           </div>
         </div>
+      </div>
+
+      
+
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="carDetails">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Car Details</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <!-- Don't remove the class names -->
+        <p class="driver_name"></p>
+        <p class="rating_num"></p>
+        <p class="driver_address"></p>
+        <p class="driver_contact"></p>
+        <p class="driver_email"></p>
+        <img src="" alt="" srcset="" class="car_image image-fluid" width="350px" height="200px">
+        <p class="car_brand"></p>
+        <p class="car_color"></p>
+        <p class="car_gas"></p>
+        <p class="car_seater"></p>
+        <p class="car_plateNum"></p>
+        <p class="car_type"></p>
+        <p class="rate"></p>
+
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
 
     </div>

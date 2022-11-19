@@ -45,7 +45,12 @@ switch ($_SERVER['REQUEST_METHOD']) {
 				$d = json_decode(base64_decode(file_get_contents("php://input")));
 				echo json_encode($auth->verify_user($d), JSON_PRETTY_PRINT);
 				break;
-
+			
+			// Pull bookings
+			case 'pull_booking':
+				$d = json_decode(base64_decode(file_get_contents("php://input")));
+				echo json_encode($get->pull_booking($d), JSON_PRETTY_PRINT);
+				break;
 			// 	// AUTH
 			// case 'regUser':
 			// 	$d = json_decode(base64_decode(file_get_contents("php://input")));
