@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthguardServiceService } from './services/authguard-service.service';
 import { ProfileComponent } from './components/profile/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { AddBookingComponent } from './components/add-booking/add-booking.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomeComponent } from './components/home/home.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    AddBookingComponent
 
   ],
   imports: [

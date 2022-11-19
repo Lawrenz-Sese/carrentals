@@ -1,0 +1,124 @@
+<div class="page-container">
+  <!-- Side Navigator of every page -->
+  <div class="side-nav">
+    <div class="profile-img">
+      <img src="./assets/rider.png" alt="">
+    </div>
+    <div class="nav-links">
+      <div class="nav-icons" routerLink="/home" routerLinkActive="active">
+        <i class="fa-solid fa-house" routerLink="/home" routerLinkActive="active"></i>
+      </div>
+      <div class="nav-icons">
+        <i class="fa-solid fa-calendar"></i>
+      </div>
+      <div class="nav-icons" routerLink="/add-booking" routerLinkActive="active">
+        <i class="fa-solid fa-car" routerLink="/add-booking" routerLinkActive="active"></i>
+      </div>
+      <hr class="divisor">
+      <div class="nav-icons">
+        <i class="fa-solid fa-user"></i>
+      </div>
+      <div class="nav-icons">
+        <i class="fa-solid fa-gear"></i>
+      </div>
+    </div>
+  </div>
+  <!-- All contents placed here -->
+  <div class="body-container">
+    <div class="booking-container">
+      <div class="main">
+        <div class="main-text">Available Booking</div>
+
+        <div class="filter">
+          <div class="toggle">
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+              <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btncheck1">2 Seaters</label>
+
+              <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btncheck2">4 Seaters</label>
+
+              <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btncheck3">6+ Seaters</label>
+            </div>
+          </div>
+          <div class="search">
+            <div class="input-group">
+              <div class="input-group-text" id="btnGroupAddon"><i class="fa-solid fa-magnifying-glass"></i></div>
+              <input type="text" class="form-control" placeholder="Type something here..."
+                aria-label="Type something here..." aria-describedby="btnGroupAddon">
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-cards">
+            <div class="card-booking" *ngFor = "let driver of driver">
+                <div class="colored-line"></div>
+                <div class="driver-info">
+                    <div class="dr-image">
+                        <div class="img-holder">
+                            <img src="./assets/blank.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="dr-text">
+                        <p style="font-weight: 700">{{driver.name}}</p>
+                        <p>{{driver.contact}}</p>
+                        <p>{{driver.address}}</p>
+                        <p>Rating: {{driver.rating}}</p>
+                    </div>
+                </div>
+                <div class="ride-info">
+                    <p style="font-weight: 700; margin-left: 10px;">Car Details</p>
+                    <div class="car-details">
+                        <p>{{driver.gas}}</p>
+                        <p>|</p>
+                        <p>{{driver.type}}</p>
+                        <p>|</p>
+                        <p>{{driver.seater}} Seater</p>
+                    </div>
+                    <div class="cta-btn">
+                        <button>
+                            <p>{{driver.price | currency: 'P'}}/Day</p>
+                        </button>
+                        <button>
+                            <p>Detail</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      </div>
+      <div class="sub">
+        <h4 class="sub-text">Recent Booking</h4>
+
+        <div class="sub-cards">
+          <div class="sub-card">
+            <div class="driver-card">
+              <img src="./assets/blank.jpg" alt="">
+            </div>
+            <p class="driver-name">Joselito Dela Cruz
+              <br> <span>Iba, Zambales</span>
+            </p>
+            <div class="details">
+              <div class="km">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Iba, Zambales</p>
+              </div>
+              <div class="seaters">
+                <i class="fa-solid fa-users"></i>
+                <p>4</p>
+              </div>
+              <div class="car-type">
+                <i class="fa-solid fa-car"></i>
+                <p>Innova</p>
+              </div>
+            </div>
+            <div class="colored-line"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

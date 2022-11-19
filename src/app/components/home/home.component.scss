@@ -4,7 +4,7 @@ h4 {
 }
 
 .page-container {
-  background-color: #f8f5f2;
+  background-color: #fff;
   width: 100%;
   height: auto;
   display: flex;
@@ -16,7 +16,7 @@ h4 {
   width: 5%;
   height: 100vh;
   background-color: #078080;
-  border-radius: 0px 9px 9px 0px;
+  // border-radius: 0px 9px 9px 0px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 
   .profile-img {
@@ -46,14 +46,21 @@ h4 {
       justify-content: center;
       align-items: center;
       border-radius: 10px;
-      color: #f8f5f2;
+      color: #fff;
       box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
       font-size: 1em;
       cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .nav-icons:hover {
+      background-color: #fff;
+      color:#078080;
+      transition: 0.3s;
     }
 
     .active{
-        background-color: #f8f5f2;
+        background-color: #fff;
         width: 45px;
         height: 45px;
         display: flex;
@@ -66,7 +73,7 @@ h4 {
     .divisor {
         width: 60%;
         height: 2px;
-        background-color: #f8f5f2;
+        background-color: #fff;
         margin-top: -5px;
     }
   }
@@ -91,7 +98,7 @@ h4 {
     
     .body-banner {
       width: 95%;
-      height: 250px;
+      height: 200px;
       background-color: #f45d48;
       border-radius: 10px;
       margin-top: 15px;
